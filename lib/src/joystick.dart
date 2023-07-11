@@ -79,10 +79,10 @@ class _JoystickState extends State<Joystick> {
           key: _baseKey,
           child: widget.base ?? JoystickBase(mode: widget.mode),
         ),
-        GestureDetector(
-          onPanStart: (details) => _stickDragStart(details.globalPosition),
-          onPanUpdate: (details) => _stickDragUpdate(details.globalPosition),
-          onPanEnd: (details) => _stickDragEnd(),
+        Listener(
+          onPointerDown: (details) => _stickDragStart(details.position),
+          onPointerMove: (details) => _stickDragUpdate(details.position),
+          onPointerUp: (details) => _stickDragEnd(),
           child: widget.stick,
         ),
       ],
